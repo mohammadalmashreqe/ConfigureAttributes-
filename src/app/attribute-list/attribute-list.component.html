@@ -1,0 +1,60 @@
+
+<div class='card'>
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+  <div class='card-body'>
+   
+  
+    <div class='table-responsive'>
+      <div *ngIf="errorMessage" style="color: red">No item added yet</div>
+      <table class='table'
+             *ngIf='List.length'>
+        <thead>
+          <tr>
+        
+            <th>Name</th>
+            <th>Regular expression</th>
+            
+            <th></th>
+
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let Item of List'>
+        
+            <td> {{Item.name}} </td>
+            <td> {{Item.regularExpression}} </td>
+           <td> 
+            <a [routerLink]="['/Attributes',Item.ID]"  >  Edit</a>
+            <a  [routerLink]="['/ConfirmationDialog',Item.ID]">  Delete</a>
+             
+          </td>
+        
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="card-footer">       
+
+      <button class="btn btn-outline-secondary" style="float: right" (click)="onAdd()" >
+      Add new 
+      
+      
+      </button>
+      
+      <button class="btn btn-outline-secondary" style="float: right;margin-right: 10px;" (click)="onExportData()" >
+        Export as a JSON file 
+        
+        
+        </button>
+        <label id="ButtonError" style="color: red;display: none">
+        No data found to Export 
+        </label>
+      </div>
+     
+</div>
